@@ -7,6 +7,7 @@
     }
     $_SESSION['user_id'] = $userId;
     $_SESSION['user_type'] = $userType;
+    $_SESSION['login_error'] = FALSE;
   }
 
   if(isset($_POST['mail']) && isset($_POST['password'])) {
@@ -28,6 +29,9 @@
       }
     }
     mysqli_close($link);
+    session_start();
+    $_SESSION['login_error'] = TRUE;
+    header('Location: ./login.php');
   } else {
     header('Location: ./login.php');
   }

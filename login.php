@@ -1,3 +1,7 @@
+<?php
+  session_start();
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -13,6 +17,11 @@
       <h2>Database System I</h2>
     </header>
     <section>
+      <?php
+        if($_SESSION['login_error']) {
+          echo '<p>メールアドレスまたはパスワードが間違っています</p>';
+        }
+      ?>
       <form action="./auth.php" method="post">
         <input type="email" name="mail" placeholder="メールアドレス">
         <input type="password" name="password" placeholder="パスワード">
