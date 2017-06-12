@@ -14,8 +14,8 @@
     </header>
     <section>
       <form action="./auth.php" method="post">
-        <input type="text" placeholder="ユーザID">
-        <input type="password" placeholder="パスワード">
+        <input type="email" name="mail" placeholder="メールアドレス">
+        <input type="password" name="password" placeholder="パスワード">
         <input type="submit" value="Login">
       </form>
       <div>or</div>
