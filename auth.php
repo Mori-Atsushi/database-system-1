@@ -1,11 +1,9 @@
 <?php
   function setSession($result, $userType) {
     session_start();
-    $userId = 0;
     while($row = mysqli_fetch_assoc($result)) {
-      $uesrId = $row['user_id'];
+      $_SESSION['user_id'] = $row['user_id'];
     }
-    $_SESSION['user_id'] = $userId;
     $_SESSION['user_type'] = $userType;
     $_SESSION['login_error'] = FALSE;
   }
@@ -22,17 +20,20 @@
       $query = 'select * from ' . $userType . ' where mail = "' . $_POST['mail'] . '" and pass = "' . $_POST['password'] . '"';
       $result = mysqli_query($link, $query)
         or die('問い合わせの実行に失敗しました');
-      if(mysqli_num_rows($result) == 1) {
+      if(mysqli_num_rows($result) === 1) {
         setSession($result, $userType);
         mysqli_close($link);
         header('Location: ./index.php');
+        exit();
       }
     }
     mysqli_close($link);
     session_start();
     $_SESSION['login_error'] = TRUE;
     header('Location: ./login.php');
+    exit();
   } else {
     header('Location: ./login.php');
+    exit();
   }
 ?>
