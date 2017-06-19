@@ -1,11 +1,16 @@
 <?php
   function setSession($result, $userType) {
-    session_start();
-    while($row = mysqli_fetch_assoc($result)) {
-      $_SESSION['user_id'] = $row['user_id'];
+    if(mysqli_num_rows($result) === 1) {
+      session_start();
+      while($row = mysqli_fetch_assoc($result)) {
+        $_SESSION['user_id'] = $row['user_id'];
+      }
+      $_SESSION['user_type'] = $userType;
+      $_SESSION['login_error'] = FALSE;
+      mysqli_close($link);
+      header('Location: ./index.php');
+      exit();
     }
-    $_SESSION['user_type'] = $userType;
-    $_SESSION['login_error'] = FALSE;
   }
 
   if(isset($_POST['mail']) && isset($_POST['password'])) {
@@ -20,12 +25,7 @@
       $query = 'select * from ' . $userType . ' where mail = "' . $_POST['mail'] . '" and pass = "' . $_POST['password'] . '"';
       $result = mysqli_query($link, $query)
         or die('問い合わせの実行に失敗しました');
-      if(mysqli_num_rows($result) === 1) {
-        setSession($result, $userType);
-        mysqli_close($link);
-        header('Location: ./index.php');
-        exit();
-      }
+      setSession($result, $userType);
     }
     mysqli_close($link);
     session_start();
