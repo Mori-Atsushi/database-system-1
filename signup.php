@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>login | Database System 1</title>
+    <title>sign up | Database System 1</title>
     <meta charset="UTF-8">
     <meta name="description" content="Database System 2">
     <meta name="author" content="Mori Atsushi">
@@ -18,17 +18,25 @@
     </header>
     <section>
       <?php
-        if($_SESSION['login_error']) {
-          echo '<p>メールアドレスまたはパスワードが間違っています</p>';
+        switch($_SESSION['regist_error']) {
+          case '1':
+            echo '<p>このメールアドレスは既に登録されています</p>';
+            break;
+          case '2':
+            echo '<p>パスワードが異なっています。</p>';
+            break;
+          default:
+            break;
         }
       ?>
-      <form action="./auth.php" method="post">
+      <form action="./regist.php" method="post">
         <input type="email" name="mail" placeholder="メールアドレス">
         <input type="password" name="password" placeholder="パスワード">
-        <input type="submit" value="Login">
+        <input type="password" name="password2" placeholder="パスワード(確認)">
+        <input type="submit" value="Sign Up">
       </form>
       <div>or</div>
-      <a href="./signup.php">Sign Up</a>
+      <a href="./login.php">Login</a>
     </section>
     <footer>
       University of Tsukuba
