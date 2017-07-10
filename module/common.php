@@ -10,7 +10,7 @@
       $return .= '<input class="button" type="submit" value="検索">';
       $return .= '</form>';
       $return .= '<nav>';
-      $return .= '<button class="button"><i class="fa fa-bars" aria-hidden="true"></i></button>';
+      $return .= '<button id="menu-button" class="button menu-button"><span class="menu-button-icon"></span></button>';
       $return .= '<ul>';
       $return .= '<li><a href="./user-config.php">ユーザ設定</a></li>';
       $return .= '<li><a href="./auth/logout.php">ログアウト</a></li>';

@@ -40,7 +40,12 @@ input.text {
 }
 
 
-input.text:focus {
+input:focus {
+  outline: 0;
+  border-color: none;
+}
+
+button:focus {
   outline: 0;
   border-color: none;
 }
@@ -59,12 +64,14 @@ input:-webkit-autofill {
   border: none;
   cursor: pointer;
   line-height: 50px;
+  height: 50px;
   margin: 30px 0;
 }
 
 header {
   background-color: #629E46;
   color: #f4f4f4;
+  position: relative;
 }
 
 header .top {
@@ -92,7 +99,7 @@ header .bar {
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 0 5%;
+  padding: 0 4%;
 }
 
 header form {
@@ -138,8 +145,85 @@ header nav {
   width: 10%;
 }
 
+header nav .menu-button {
+  position: relative;
+  width: 100%;
+}
+
+header nav .menu-button-icon {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30px;
+  height: 3px;
+  margin: -1.5px 0 0 -15px;
+  background: #f4f4f4;
+  transition: 0.2s;
+  -webkit-transition: 0.2s;
+}
+
+header nav .menu-button-icon::before, header nav .menu-button-icon::after {
+  display: block;
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 30px;
+  height: 3px;
+  background: #f4f4f4;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+}
+
+header nav .menu-button-icon::before {
+  margin-top: -11.5px;
+}
+
+header nav .menu-button-icon::after {
+  margin-top: 8.5px;
+}
+
+nav.open .menu-button-icon {
+  background: transparent;
+}
+
+nav.open .menu-button-icon::before, nav.open .menu-button-icon::after {
+  margin-top: 0;
+}
+
+nav.open .menu-button-icon::before {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+nav.open .menu-button-icon::after {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+
 header ul {
   display: none;
+}
+
+header .open ul {
+  display: block;
+  position: absolute;
+  background-color: #ffffff;
+  width: 150px;
+  top: 90px;
+  right: 10px;
+  padding: 10px;
+  box-shadow:0px 2px 6px 1px rgba(166,166,166,0.5);
+  -moz-box-shadow:0px 2px 6px 1px rgba(166,166,166,0.5);
+  -webkit-box-shadow:0px 2px 6px 1px rgba(166,166,166,0.5);
+  border-radius:3px;
+  -moz-border-radius:3px;
+  -webkit-border-radius:3px;
+}
+
+header .open li {
+  line-height: 2.5rem;
 }
 
 footer {
