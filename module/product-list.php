@@ -33,7 +33,7 @@
     }
 
     $return = '';
-    $return .= '<div>';
+    $return .= '<div><span class="review-heart">';
     for($i = 0; $i < 5; $i++) {
       if($i < (int)$review) {
         $return .= '♥';
@@ -41,6 +41,7 @@
         $return .= '♡';
       }
     }
+    $return .= '</span>';
     if($view_num) {
       $return .= '<span>（' . number_format($review, 1) . '/5.0)</span>';
     }
