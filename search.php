@@ -16,7 +16,7 @@
   mysqli_set_charset($link, "utf8")
     or die('文字コードの設定に失敗しました');
 
-  require_once('module/review-heart.php');
+  require_once('module/product-list.php');
 ?>
 
 <!DOCTYPE html>
@@ -55,14 +55,7 @@
           echo '<p>' . $_POST['keyword'] . 'に一致する情報は見つかりませんでした。検索ワードを変えてみてください。</p>';
         } else {
           while($row = mysqli_fetch_assoc($result)) {
-            echo '<li>';
-            echo '<img src="' . $row['image_url'] . '">';
-            echo '<h3><a href="./product-detail.php?product_id=' . $row['product_id'] . '">' . $row['name'] . '</a></h3>';
-            echo '<span>-' . $row['purchase_date'] . '購入</span>';
-            echo '<h4>' . $row['shop_name'] . '</h4>';
-            echo '<div>' . $row['price'] . '円</div>';
-            echo review_heart($row['product_id'], $link);
-            echo '</li>';
+            echo product_list($row, $link);
           }
         }
       ?>
