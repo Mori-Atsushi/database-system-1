@@ -49,7 +49,9 @@
           $result = mysqli_query($link, $query)
             or die('問い合わせの実行に失敗しました');
           while($row = mysqli_fetch_assoc($result)) {
-            echo '<li><a><div>' . $row['name'] . '</div></a></li>';
+            echo '<li><a href="./product-detail.php?product_id=' . $row['product_id'] . '">';
+            echo '<div>' . $row['name'] . '</div>';
+            echo '</a></li>';
           }
         ?>
       </ul>
@@ -63,7 +65,9 @@
           $result = mysqli_query($link, $query)
             or die('問い合わせの実行に失敗しました');
           while($row = mysqli_fetch_assoc($result)) {
-            echo '<li><a><div>' . $row['name'] . '</div></a></li>';
+            echo '<li><a href="./product-detail.php?product_id=' . $row['product_id'] . '">';
+            echo '<div>' . $row['name'] . '</div>';
+            echo '</a></li>';
           }
         ?>
       </ul>
@@ -85,11 +89,15 @@
             echo '<p>購入履歴はありません</p>';
           } else {
             while($row = mysqli_fetch_assoc($result)) {
-              echo '<li><a><div>' . $row['name'] . '</div></a></li>';
+              echo '<li><a href="./product-detail.php?product_id=' . $row['product_id'] . '">';
+              echo '<div>' . $row['name'] . '</div>';
+              echo '<p>' . $row['purchase_date'] . '</p>';
+              echo '</a></li>';
             }
           }
         ?>
       </ul>
+      <a href="./">もっと見る</a>
     </section>
 
     <footer>
