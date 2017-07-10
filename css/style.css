@@ -1,0 +1,28 @@
+html {
+  background-color: #888888;
+  font-family: "Helvetica Neue", 'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro',"メイリオ", sans-serif;;
+  font-weight: 400;
+}
+
+body {
+  background-color: #f4f4f4;
+  max-width: 500px;
+  min-height: 100vh;
+  margin: 0 auto;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
