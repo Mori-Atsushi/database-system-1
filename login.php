@@ -1,5 +1,6 @@
 <?php
   session_start();
+  require_once('./module/common.php');
 ?>
 
 <!DOCTYPE html>
@@ -10,12 +11,12 @@
     <meta name="description" content="Database System 2">
     <meta name="author" content="Mori Atsushi">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
   </head>
   <body>
-    <header>
-      <h1>Online Shop</h1>
-      <h2>Database System I</h2>
-    </header>
+    <?php echo common_header(); ?>
     <section>
       <?php
         if($_SESSION['login_error']) {
