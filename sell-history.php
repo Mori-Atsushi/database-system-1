@@ -28,6 +28,7 @@
       <h1>出品履歴</h1>
       <nav>
         <ul>
+          <li><a href="./index.php">トップに戻る</a></li>
           <li><a href="./user-config.php">ユーザ設定</a></li>
           <li><a href="./auth/logout.php">ログアウト</a></li>
         </ul>
