@@ -1,4 +1,5 @@
 <?php
+  ini_set( 'display_errors', 1 );
   function setSession($result, $userType) {
     if(mysqli_num_rows($result) === 1) {
       session_start();
@@ -7,14 +8,13 @@
       }
       $_SESSION['user_type'] = $userType;
       $_SESSION['login_error'] = FALSE;
-      mysqli_close($link);
-      header('Location: ./index.php');
+      header('Location: ../index.php');
       exit();
     }
   }
 
   if(isset($_POST['mail']) && isset($_POST['password'])) {
-    require_once('config.php');
+    require_once('../config.php');
     $link = mysqli_connect($dbserver, $user, $password, $dbname)
       or die('MySQL への接続に失敗しました');
     mysqli_set_charset($link, "utf8")
@@ -30,10 +30,10 @@
     mysqli_close($link);
     session_start();
     $_SESSION['login_error'] = TRUE;
-    header('Location: ./login.php');
+    header('Location: ../login.php');
     exit();
   } else {
-    header('Location: ./login.php');
+    header('Location: ../login.php');
     exit();
   }
 ?>

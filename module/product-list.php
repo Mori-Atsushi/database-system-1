@@ -4,8 +4,11 @@
     $return .= '<li>';
     $return .= '<img src="' . $row['image_url'] . '">';
     $return .= '<h3><a href="./product-detail.php?product_id=' . $row['product_id'] . '">' . $row['name'] . '</a></h3>';
-    if($row['purchase_date'] !== null) {
+    if(isset($row['purchase_date'])) {
       $return .= '<span>-' . $row['purchase_date'] . '購入</span>';
+    }
+    if(isset($row['sell_date'])) {
+      $return .= '<span>-' . $row['sell_date'] . '出品</span>';
     }
     $return .= '<h4>' . $row['shop_name'] . '</h4>';
     $return .= '<div>' . $row['price'] . '円</div>';

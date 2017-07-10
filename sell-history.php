@@ -1,10 +1,8 @@
 <?php
-  const PRODUCT_MAX_NUM = 10;
-
+  ini_set('display_errors', 1);
   session_start();
   if(!isset($_SESSION['user_id']) || !isset($_SESSION['user_type'])) {
     header('Location: ./login.php');
-    exit();
   }
 
   require_once('config.php');
@@ -12,12 +10,14 @@
     or die('MySQL への接続に失敗しました');
   mysqli_set_charset($link, "utf8")
     or die('文字コードの設定に失敗しました');
+
+  require_once('module/product-list.php');
 ?>
 
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Database System 1</title>
+    <title>Database System 1 | 出品履歴</title>
     <meta charset="UTF-8">
     <meta name="description" content="Database System 2">
     <meta name="author" content="Mori Atsushi">
@@ -25,10 +25,7 @@
   </head>
   <body>
     <header>
-      <form action="./search.php" method="post">
-        <input type="text" name="keyword" placeholder="検索">
-        <input type="submit" value="検索">
-      </form>
+      <h1>出品履歴</h1>
       <nav>
         <ul>
           <li><a href="./user-config.php">ユーザ設定</a></li>
@@ -37,18 +34,25 @@
       </nav>
     </header>
 
-    <?php
-      switch($_SESSION['user_type']) {
-        case 'customer':
-          include('./module/user-index.php');
-          break;
-        case 'seller':
-          include('./module/seller-index.php');
-          break;
-        case 'manager':
-          break;
-      }
-    ?>
+    <section>
+      <?php
+        $query = '';
+        $query .= 'select * from product, seller ';
+        $query .= 'where product.user_id = seller.user_id ';
+        $query .= 'and product.user_id = ' . $_SESSION['user_id'] . ' ';
+        $query .= 'order by product.sell_date desc ';
+
+        $result = mysqli_query($link, $query)
+          or die('問い合わせの実行に失敗しました');
+        if(mysqli_num_rows($result) === 0) {
+          echo '<p>購入履歴はありません</p>';
+        } else {
+          while($row = mysqli_fetch_assoc($result)) {
+            echo product_list($row, $link);
+          }
+        }
+      ?>
+    </section>
 
     <footer>
       University of Tsukuba
