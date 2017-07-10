@@ -15,6 +15,8 @@
     or die('MySQL への接続に失敗しました');
   mysqli_set_charset($link, "utf8")
     or die('文字コードの設定に失敗しました');
+
+  require_once('module/review-heart.php');
 ?>
 
 <!DOCTYPE html>
@@ -59,29 +61,7 @@
             echo '<span>-' . $row['purchase_date'] . '購入</span>';
             echo '<h4>' . $row['shop_name'] . '</h4>';
             echo '<div>' . $row['price'] . '円</div>';
-
-            $query = '';
-            $query .= 'select avg(value) as review from review ';
-            $query .= 'where product_id = ' . $row['product_id'] . ' ';
-
-            $review_result = mysqli_query($link, $query)
-              or die('問い合わせの実行に失敗しました');
-            $review = 0;
-            if(mysqli_num_rows($review_result) === 1) {
-              while($review_row = mysqli_fetch_assoc($review_result)) {
-                $review = (int)$review_row['review'];
-              }
-            }
-
-            echo '<div>';
-            for($i = 0; $i < 5; $i++) {
-              if($i < $review) {
-                echo '♥';
-              } else {
-                echo '♡';
-              }
-            }
-            echo '</div>';
+            echo review_heart($row['product_id'], $link);
             echo '</li>';
           }
         }
