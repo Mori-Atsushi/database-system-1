@@ -25,6 +25,15 @@ a {
 section {
   padding: 10px 5%;
   overflow: hidden;
+  background-color: #ffffff;
+  margin: 10px 0;
+}
+
+section h2 {
+  color: #629E46;
+  margin: 10px 0 20px;;
+  font-size: 1.2rem;
+  font-weight: normal;
 }
 
 input.text {
@@ -99,11 +108,11 @@ header .bar {
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 0 4%;
 }
 
 header form {
-  width: 90%;
+  width: 85%;
+  padding-left: 5%;
 }
 
 header input.text {

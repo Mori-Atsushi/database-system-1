@@ -1,4 +1,4 @@
-<section>
+<section class="side-scroll">
   <h2>人気商品</h2>
   <ul>
     <?php
@@ -12,7 +12,8 @@
       $result = mysqli_query($link, $query)
         or die('問い合わせの実行に失敗しました');
       while($row = mysqli_fetch_assoc($result)) {
-        echo '<li><a href="./product-detail.php?product_id=' . $row['product_id'] . '">';
+        echo '<li style="background-image: url(' . $row['image_url'] . '); ">';
+        echo '<a href="./product-detail.php?product_id=' . $row['product_id'] . '">';
         echo '<div>' . $row['name'] . '</div>';
         echo '</a></li>';
       }
@@ -20,7 +21,7 @@
   </ul>
 </section>
 
-<section>
+<section class="side-scroll">
   <h2>新着商品</h2>
   <ul>
     <?php
@@ -38,7 +39,7 @@
 
 <section>
   <h2>購入履歴</h2>
-  <ul>
+  <ul class="text-list">
     <?php
       $query = '';
       $query .= 'select * from product, purchase ';
@@ -53,12 +54,12 @@
       } else {
         while($row = mysqli_fetch_assoc($result)) {
           echo '<li><a href="./product-detail.php?product_id=' . $row['product_id'] . '">';
-          echo '<div>' . $row['name'] . '</div>';
-          echo '<p>' . $row['purchase_date'] . '</p>';
+          echo '<div class="main-text">' . $row['name'] . '</div>';
+          echo '<p class="sub-text">' . $row['purchase_date'] . '</p>';
           echo '</a></li>';
         }
       }
     ?>
   </ul>
-  <a href="./purchase-history.php">もっと見る</a>
+  <a class="read-more" href="./purchase-history.php">もっと見る</a>
 </section>
