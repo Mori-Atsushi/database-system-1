@@ -32,7 +32,7 @@
       <nav>
         <ul>
           <li><a href="./user-config.php">ユーザ設定</a></li>
-          <li>ログアウト</li>
+          <li><a href="./auth/logout.php">ログアウト</a></li>
         </ul>
       </nav>
     </header>
