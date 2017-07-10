@@ -28,7 +28,8 @@
       <h1>購入履歴</h1>
       <nav>
         <ul>
-          <li>ログアウト</li>
+          <li><a href="./user-config.php">ユーザ設定</a></li>
+          <li><a href="./auth/logout.php">ログアウト</a></li>
         </ul>
       </nav>
     </header>
