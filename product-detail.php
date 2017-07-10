@@ -61,7 +61,16 @@
         echo '<img src="' . $product['image_url'] . '">';
         echo '<h2>' . $product['name'] . '</h2>';
         echo '<h3>' . $product['shop_name'] . '</h3>';
-        echo '<a href="./purchase?product_id=' . $product['product_id'] . '">購入</a>';
+        switch($_SESSION['user_type']) {
+          case 'customer':
+            echo '<a href="./purchase?product_id=' . $product['product_id'] . '">購入</a>';
+            break;
+          case 'seller':
+            if($product['user_id'] === $_SESSION['user_id']) {
+              echo '<a href="./edit-product.php?product_id=' . $product['product_id'] . '">編集</a>';
+            }
+            break;
+        }
         echo '<span>' . $product['price'] . '円</span>';
         echo '<span>（在庫：' . $product['stock'] . '）</span>';
         echo '<p>' . $product['comment'] . '</p>';
@@ -72,8 +81,11 @@
       <h2>レビュー</h2>
       <?php
         echo review_heart($product['product_id'], $link, true);
-        echo '<a href="./new-review?roduct_id=' . $product['prodcut_id'] . '">レビューを書く</a>';
-
+        switch($_SESSION['user_type']) {
+          case 'customer':
+            echo '<a href="./new-review?roduct_id=' . $product['prodcut_id'] . '">レビューを書く</a>';
+            break;
+        }
         $query = '';
         $query .= 'select * from review ';
         $query .= 'where product_id = "' . $product['product_id'] . '" ';
