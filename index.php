@@ -12,6 +12,7 @@
     or die('MySQL への接続に失敗しました');
   mysqli_set_charset($link, "utf8")
     or die('文字コードの設定に失敗しました');
+  require_once('./module/common.php');
 ?>
 
 <!DOCTYPE html>
@@ -27,18 +28,7 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
   </head>
   <body>
-    <header>
-      <form action="./search.php" method="post">
-        <input type="text" name="keyword" placeholder="検索">
-        <input type="submit" value="検索">
-      </form>
-      <nav>
-        <ul>
-          <li><a href="./user-config.php">ユーザ設定</a></li>
-          <li><a href="./auth/logout.php">ログアウト</a></li>
-        </ul>
-      </nav>
-    </header>
+    <?php echo common_header($search=true); ?>
 
     <?php
       switch($_SESSION['user_type']) {
@@ -53,9 +43,8 @@
           break;
       }
     ?>
-
-    <footer>
-      University of Tsukuba
-    </footer>
+    <?php echo common_footer(); ?>
   </body>
+
+  <script src="https://use.fontawesome.com/c825f96c6a.js"></script>
 </html>
