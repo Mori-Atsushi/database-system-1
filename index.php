@@ -43,6 +43,7 @@
           include('./module/user-index.php');
           break;
         case 'seller':
+          include('./module/seller-index.php');
           break;
         case 'manager':
           break;
