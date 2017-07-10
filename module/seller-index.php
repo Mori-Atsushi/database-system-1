@@ -57,7 +57,7 @@
       $result = mysqli_query($link, $query)
         or die('問い合わせの実行に失敗しました');
       if(mysqli_num_rows($result) === 0) {
-        echo '<p>購入履歴はありません</p>';
+        echo '<p>購入履歴はありません。</p>';
       } else {
         while($row = mysqli_fetch_assoc($result)) {
           echo '<li><a href="./product-detail.php?product_id=' . $row['product_id'] . '">';

@@ -46,6 +46,7 @@
           include('./module/seller-index.php');
           break;
         case 'manager':
+          include('./module/manager-index.php');
           break;
       }
     ?>
