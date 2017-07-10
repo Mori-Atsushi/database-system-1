@@ -21,8 +21,9 @@
         if($_SESSION['login_error']) {
           echo '<p>メールアドレスまたはパスワードが間違っています</p>';
         }
+        unset($_SESSION['login_error']);
       ?>
-      <form action="./auth.php" method="post">
+      <form action="./auth/auth.php" method="post">
         <input type="email" name="mail" placeholder="メールアドレス">
         <input type="password" name="password" placeholder="パスワード">
         <input type="submit" value="Login">
