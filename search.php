@@ -22,7 +22,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Database System 1 | 「<?php echo $_POST['keyword'] ?>」の検索結果</title>
+    <title><?php echo $_POST['keyword'] ?>」の検索結果 | Database System 1</title>
     <meta charset="UTF-8">
     <meta name="description" content="Database System 2">
     <meta name="author" content="Mori Atsushi">
