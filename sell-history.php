@@ -1,8 +1,12 @@
 <?php
   ini_set('display_errors', 1);
   session_start();
-  if(!isset($_SESSION['user_id']) || !isset($_SESSION['user_type'])) {
-    header('Location: ./login.php');
+  if(!isset($_SESSION['user_id'])
+    || !isset($_SESSION['user_type'])
+    || $_SESSION['user_type'] !== 'seller'
+  ) {
+    header('Location: ./index.php');
+    exit();
   }
 
   require_once('config.php');

@@ -1,14 +1,12 @@
 <?php
   const REVIEW_MAX_NUM = 10;
 
-  if(!isset($_GET['product_id'])) {
-    header('Location: ./index.php');
-    exit();
-  }
-
   session_start();
-  if(!isset($_SESSION['user_id']) || !isset($_SESSION['user_type'])) {
-    header('Location: ./login.php');
+  if(!isset($_GET['product_id'])
+    || !isset($_SESSION['user_id'])
+    || !isset($_SESSION['user_type'])
+  ) {
+    header('Location: ./index.php');
     exit();
   }
 

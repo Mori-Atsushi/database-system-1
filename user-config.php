@@ -3,7 +3,7 @@
 
   session_start();
   if(!isset($_SESSION['user_id']) || !isset($_SESSION['user_type'])) {
-    header('Location: ./login.php');
+    header('Location: ./index.php');
     exit();
   }
 

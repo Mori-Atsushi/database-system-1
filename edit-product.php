@@ -1,13 +1,14 @@
 <?php
   ini_set('display_errors', 1);
-  if(!isset($_GET['product_id'])) {
-    header('Location: ./index.php');
-    exit();
-  }
 
   session_start();
-  if(!isset($_SESSION['user_id']) || !isset($_SESSION['user_type'])) {
-    header('Location: ./login.php');
+  if(!isset($_GET['product_id'])
+    || !isset($_SESSION['user_id'])
+    || !isset($_SESSION['user_type'])
+    || $_SESSION['user_type'] !== 'seller'
+  ) {
+    header('Location: ./index.php');
+    exit();
   }
 
   require_once('config.php');

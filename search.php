@@ -1,12 +1,11 @@
 <?php
-  if(!isset($_POST['keyword']) || $_POST['keyword'] === '') {
-    header('Location: ./index.php');
-    exit();
-  }
-
   session_start();
-  if(!isset($_SESSION['user_id']) || !isset($_SESSION['user_type'])) {
-    header('Location: ./login.php');
+  if(!isset($_POST['keyword'])
+    || $_POST['keyword'] === ''
+    || !isset($_SESSION['user_id'])
+    || !isset($_SESSION['user_type'])
+  ) {
+    header('Location: ./index.php');
     exit();
   }
 
