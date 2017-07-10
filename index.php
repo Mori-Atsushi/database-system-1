@@ -4,6 +4,7 @@
   session_start();
   if(!isset($_SESSION['user_id']) || !isset($_SESSION['user_type'])) {
     header('Location: ./login.php');
+    exit();
   }
 
   require_once('config.php');
@@ -25,7 +26,7 @@
   <body>
     <header>
       <form action="./search.php" method="post">
-        <input type="text" name="mail" placeholder="検索">
+        <input type="text" name="keyword" placeholder="検索">
         <input type="submit" value="検索">
       </form>
       <nav>

@@ -1,8 +1,13 @@
 <?php
-  ini_set('display_errors', 1);
+  if(!isset($_POST['keyword']) || $_POST['keyword'] === '') {
+    header('Location: ./index.php');
+    exit();
+  }
+
   session_start();
   if(!isset($_SESSION['user_id']) || !isset($_SESSION['user_type'])) {
     header('Location: ./login.php');
+    exit();
   }
 
   require_once('config.php');
@@ -17,7 +22,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Database System 1</title>
+    <title>Database System 1 | 「<?php echo $_POST['keyword'] ?>」の検索結果</title>
     <meta charset="UTF-8">
     <meta name="description" content="Database System 2">
     <meta name="author" content="Mori Atsushi">
@@ -25,7 +30,10 @@
   </head>
   <body>
     <header>
-      <h1>購入履歴</h1>
+      <form action="./search.php" method="post">
+        <input type="text" name="keyword" placeholder="検索" value="<?php echo $_POST['keyword'] ?>">
+        <input type="submit" value="検索">
+      </form>
       <nav>
         <ul>
           <li>ログアウト</li>
@@ -36,16 +44,15 @@
     <section>
       <?php
         $query = '';
-        $query .= 'select * from product, purchase, seller ';
-        $query .= 'where product.product_id = purchase.product_id ';
-        $query .= 'and product.user_id = seller.user_id ';
-        $query .= 'and purchase.user_id = ' . $_SESSION['user_id'] . ' ';
-        $query .= 'order by purchase.purchase_date desc ';
+        $query .= 'select * from product, seller ';
+        $query .= 'where product.user_id = seller.user_id ';
+        $query .= 'and product.name like "%' . $_POST['keyword'] . '%" ';
+        $query .= 'order by product.sell_date desc ';
 
         $result = mysqli_query($link, $query)
           or die('問い合わせの実行に失敗しました');
         if(mysqli_num_rows($result) === 0) {
-          echo '<p>購入履歴はありません</p>';
+          echo '<p>' . $_POST['keyword'] . 'に一致する情報は見つかりませんでした。検索ワードを変えてみてください。</p>';
         } else {
           while($row = mysqli_fetch_assoc($result)) {
             echo product_list($row, $link);
