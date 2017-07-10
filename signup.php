@@ -1,5 +1,6 @@
 <?php
   session_start();
+  require_once('./module/common.php');
 ?>
 
 <!DOCTYPE html>
@@ -10,37 +11,41 @@
     <meta name="description" content="Database System 2">
     <meta name="author" content="Mori Atsushi">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/account.css">
   </head>
   <body>
-    <header>
-      <h1>Online Shop</h1>
-      <h2>Database System I</h2>
-    </header>
+    <?php echo common_header(); ?>
     <section>
       <?php
+        echo '<p class="error">';
         switch($_SESSION['regist_error']) {
           case '1':
-            echo '<p>このメールアドレスは既に登録されています</p>';
+            echo 'このメールアドレスは既に登録されています';
             break;
           case '2':
-            echo '<p>パスワードが異なっています。</p>';
+            echo 'パスワードが異なっています。';
+            break;
+          case '3':
+            echo '全てのフォームを入力してください。';
             break;
           default:
             break;
         }
+        echo '</p>';
         unset($_SESSION['regist_error']);
       ?>
       <form action="./auth/regist.php" method="post">
-        <input type="email" name="mail" placeholder="メールアドレス">
-        <input type="password" name="password" placeholder="パスワード">
-        <input type="password" name="password2" placeholder="パスワード(確認)">
-        <input type="submit" value="Sign Up">
+        <input class="text" type="email" name="mail" placeholder="メールアドレス">
+        <input class="text" type="password" name="password" placeholder="パスワード">
+        <input class="text" type="password" name="password2" placeholder="パスワード(確認)">
+        <input class="button" type="submit" value="Sign Up">
       </form>
-      <div>or</div>
-      <a href="./login.php">Login</a>
+      <div class="or">OR</div>
+      <a class="button" href="./login.php">Login</a>
     </section>
-    <footer>
-      University of Tsukuba
-    </footer>
+    <?php echo common_footer(); ?>
   </body>
 </html>

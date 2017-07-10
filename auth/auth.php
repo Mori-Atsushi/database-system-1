@@ -2,7 +2,6 @@
   ini_set( 'display_errors', 1 );
   function setSession($result, $userType) {
     if(mysqli_num_rows($result) === 1) {
-      session_start();
       while($row = mysqli_fetch_assoc($result)) {
         $_SESSION['user_id'] = $row['user_id'];
       }

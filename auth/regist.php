@@ -1,6 +1,9 @@
 <?php
-  if(isset($_POST['mail']) && isset($_POST['password']) && isset($_POST['password2'])) {
-    session_start();
+  session_start();
+  if(isset($_POST['mail']) && $_POST['mail'] !== ''
+    && isset($_POST['password']) && $_POST['password'] !== ''
+    && isset($_POST['password2']) && $_POST['password2'] !== ''
+  ) {
     if($_POST['password'] !== $_POST['password2']) {
       $_SESSION['regist_error'] = 2;
       header('Location: ../signup.php');
@@ -31,7 +34,8 @@
     require_once('auth.php');
     exit();
   } else {
-    header('Location: ../login.php');
+    $_SESSION['regist_error'] = 3;
+    header('Location: ../signup.php');
     exit();
   }
 ?>
