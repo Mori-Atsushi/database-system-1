@@ -14,6 +14,7 @@
 
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/account.css">
   </head>
   <body>
     <?php echo common_header(); ?>
@@ -25,12 +26,12 @@
         unset($_SESSION['login_error']);
       ?>
       <form action="./auth/auth.php" method="post">
-        <input type="email" name="mail" placeholder="メールアドレス">
-        <input type="password" name="password" placeholder="パスワード">
-        <input type="submit" value="Login">
+        <input class="text" type="email" name="mail" placeholder="メールアドレス">
+        <input class="text" type="password" name="password" placeholder="パスワード">
+        <input class="button" type="submit" value="Login">
       </form>
-      <div>or</div>
-      <a href="./signup.php">Sign Up</a>
+      <div class="or">OR</div>
+      <a class="button" href="./signup.php">Sign Up</a>
     </section>
     <?php echo common_footer(); ?>
   </body>

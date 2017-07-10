@@ -1,0 +1,28 @@
+.or {
+  font-size: 1.4rem;
+  color: #aaaaaa;
+  text-align: center;
+  width: 20%;
+  margin: auto;
+  position: relative;
+}
+
+.or::after, .or::before {
+  content: '';
+  display: block;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 1px;
+  background-color: #aaaaaa;
+}
+
+.or::before {
+  left: 100%;
+}
+
+.or::after {
+  right: 100%;
+}

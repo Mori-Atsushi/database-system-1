@@ -1,5 +1,6 @@
 html {
   background-color: #888888;
+  color: #333333;
   font-family: "Helvetica Neue", 'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro',"メイリオ", sans-serif;;
   font-weight: 400;
 }
@@ -19,6 +20,45 @@ ul {
 
 a {
   text-decoration: none;
+}
+
+section {
+  padding: 10px 5%;
+  overflow: hidden;
+}
+
+input.text {
+  margin: 20px 0;
+  display: block;
+  width: 100%;
+  padding: 10px 0;
+  border: none;
+  border-bottom: solid 1px #4C7C34;
+  color: #333333;
+  background: none;
+  background-color: transparent;
+}
+
+input.text:focus {
+  outline: 0;
+  border-color: none;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #f4f4f4 inset;
+}
+
+.button {
+  padding: 0;
+  text-align: center;
+  color: #f4f4f4;
+  display: block;
+  width: 100%;
+  background-color: #629E46;
+  border: none;
+  cursor: pointer;
+  line-height: 50px;
+  margin: 30px 0;
 }
 
 header {
