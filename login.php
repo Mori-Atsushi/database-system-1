@@ -32,8 +32,6 @@
       <div>or</div>
       <a href="./signup.php">Sign Up</a>
     </section>
-    <footer>
-      University of Tsukuba
-    </footer>
+    <?php echo common_footer(); ?>
   </body>
 </html>

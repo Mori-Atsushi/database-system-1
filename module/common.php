@@ -10,4 +10,13 @@
     $return .= '</header>';
     return $return;
   }
+
+  function common_footer() {
+    $return = '';
+    $return .= '<footer>';
+    $return .= '<img src="./image/tsukuba.png">';
+    $return .= '<div class="text">University of Tsukuba</div>';
+    $return .= '</footer>';
+    return $return;
+  }
 ?>
