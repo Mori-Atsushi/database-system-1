@@ -1,4 +1,6 @@
 <?php
+  const REVIEW_MAX_NUM = 10;
+
   if(!isset($_GET['product_id'])) {
     header('Location: ./index.php');
     exit();
@@ -15,6 +17,8 @@
     or die('MySQL への接続に失敗しました');
   mysqli_set_charset($link, "utf8")
     or die('文字コードの設定に失敗しました');
+
+  require_once('module/product-list.php');
 
   $query = '';
   $query .= 'select * from product, seller ';
@@ -60,6 +64,36 @@
         echo '<span>' . $product['price'] . '円</span>';
         echo '<span>（在庫：' . $product['stock'] . '）</span>';
         echo '<p>' . $product['comment'] . '</p>';
+      ?>
+    </section>
+
+    <section>
+      <h2>レビュー</h2>
+      <?php
+        echo review_heart($product['product_id'], $link, true);
+        echo '<a href="./new-review?roduct_id=' . $product['prodcut_id'] . '">レビューを書く</a>';
+
+        $query = '';
+        $query .= 'select * from review ';
+        $query .= 'where product_id = "' . $product['product_id'] . '" ';
+        $query .= 'order by review_id desc ';
+        $query .= 'limit ' . REVIEW_MAX_NUM;
+
+        $result = mysqli_query($link, $query)
+          or die('問い合わせの実行に失敗しました');
+        if(mysqli_num_rows($result) === 0) {
+          echo '<p>まだレビューはありません。</p>';
+        } else {
+        echo '<ul>';
+          while($row = mysqli_fetch_assoc($result)) {
+            echo '<li>';
+            echo '<h3>' . $row['title'] . '</h3>';
+            echo '<span>（評価：' . $row['value'] . ')</span>';
+            echo '<p>' . $row['comment'] . '</p>';
+            echo '</li>';
+          }
+          echo '</ul>';
+        }
       ?>
     </section>
 

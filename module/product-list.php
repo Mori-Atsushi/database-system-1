@@ -15,7 +15,7 @@
     return $return;
   }
 
-  function review_heart($product_id, $link) {
+  function review_heart($product_id, $link, $view_num = false) {
     $query = '';
     $query .= 'select avg(value) as review from review ';
     $query .= 'where product_id = ' . $product_id . ' ';
@@ -25,18 +25,21 @@
     $review = 0;
     if(mysqli_num_rows($result) === 1) {
       while($row = mysqli_fetch_assoc($result)) {
-        $review = (int)$row['review'];
+        $review = (double)$row['review'];
       }
     }
 
     $return = '';
     $return .= '<div>';
     for($i = 0; $i < 5; $i++) {
-      if($i < $review) {
+      if($i < (int)$review) {
         $return .= '♥';
       } else {
         $return .= '♡';
       }
+    }
+    if($view_num) {
+      $return .= '<span>（' . number_format($review, 1) . '/5.0)</span>';
     }
     $return .= '</div>';
 
