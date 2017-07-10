@@ -1,12 +1,11 @@
 <?php
-  if(!isset($_POST['keyword']) || $_POST['keyword'] === '') {
-    header('Location: ./index.php');
-    exit();
-  }
-
   session_start();
-  if(!isset($_SESSION['user_id']) || !isset($_SESSION['user_type'])) {
-    header('Location: ./login.php');
+  if(!isset($_POST['keyword'])
+    || $_POST['keyword'] === ''
+    || !isset($_SESSION['user_id'])
+    || !isset($_SESSION['user_type'])
+  ) {
+    header('Location: ./index.php');
     exit();
   }
 
@@ -22,7 +21,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Database System 1 | 「<?php echo $_POST['keyword'] ?>」の検索結果</title>
+    <title><?php echo $_POST['keyword'] ?>」の検索結果 | Database System 1</title>
     <meta charset="UTF-8">
     <meta name="description" content="Database System 2">
     <meta name="author" content="Mori Atsushi">
@@ -36,6 +35,7 @@
       </form>
       <nav>
         <ul>
+          <li><a href="./index.php">トップに戻る</a></li>
           <li><a href="./user-config.php">ユーザ設定</a></li>
           <li><a href="./auth/logout.php">ログアウト</a></li>
         </ul>

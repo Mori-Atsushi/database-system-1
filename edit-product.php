@@ -1,13 +1,14 @@
 <?php
   ini_set('display_errors', 1);
-  if(!isset($_GET['product_id'])) {
-    header('Location: ./index.php');
-    exit();
-  }
 
   session_start();
-  if(!isset($_SESSION['user_id']) || !isset($_SESSION['user_type'])) {
-    header('Location: ./login.php');
+  if(!isset($_GET['product_id'])
+    || !isset($_SESSION['user_id'])
+    || !isset($_SESSION['user_type'])
+    || $_SESSION['user_type'] !== 'seller'
+  ) {
+    header('Location: ./index.php');
+    exit();
   }
 
   require_once('config.php');
@@ -36,7 +37,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Database System 1 | 商品編集</title>
+    <title>商品編集 | Database System 1</title>
     <meta charset="UTF-8">
     <meta name="description" content="Database System 2">
     <meta name="author" content="Mori Atsushi">
@@ -47,6 +48,7 @@
       <h1>商品編集</h1>
       <nav>
         <ul>
+          <li><a href="./index.php">トップに戻る</a></li>
           <li><a href="./user-config.php">ユーザ設定</a></li>
           <li><a href="./auth/logout.php">ログアウト</a></li>
         </ul>

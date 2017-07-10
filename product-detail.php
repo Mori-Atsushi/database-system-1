@@ -1,14 +1,12 @@
 <?php
   const REVIEW_MAX_NUM = 10;
 
-  if(!isset($_GET['product_id'])) {
-    header('Location: ./index.php');
-    exit();
-  }
-
   session_start();
-  if(!isset($_SESSION['user_id']) || !isset($_SESSION['user_type'])) {
-    header('Location: ./login.php');
+  if(!isset($_GET['product_id'])
+    || !isset($_SESSION['user_id'])
+    || !isset($_SESSION['user_type'])
+  ) {
+    header('Location: ./index.php');
     exit();
   }
 
@@ -40,7 +38,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Database System 1 | <?php echo $product['name']; ?></title>
+    <title><?php echo $product['name']; ?> | Database System 1</title>
     <meta charset="UTF-8">
     <meta name="description" content="Database System 2">
     <meta name="author" content="Mori Atsushi">
@@ -51,6 +49,7 @@
       <h1><?php echo $product['name']; ?></h1>
       <nav>
         <ul>
+          <li><a href="./index.php">トップに戻る</a></li>
           <li><a href="./user-config.php">ユーザ設定</a></li>
           <li><a href="./auth/logout.php">ログアウト</a></li>
         </ul>

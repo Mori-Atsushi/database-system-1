@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>login | Database System 1</title>
+    <title>ログイン | Database System 1</title>
     <meta charset="UTF-8">
     <meta name="description" content="Database System 2">
     <meta name="author" content="Mori Atsushi">
