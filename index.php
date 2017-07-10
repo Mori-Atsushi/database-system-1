@@ -97,7 +97,7 @@
           }
         ?>
       </ul>
-      <a href="./">もっと見る</a>
+      <a href="./purchase-history.php">もっと見る</a>
     </section>
 
     <footer>
