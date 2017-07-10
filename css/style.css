@@ -1,0 +1,67 @@
+html {
+  background-color: #888888;
+  font-family: "Helvetica Neue", 'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro',"メイリオ", sans-serif;;
+  font-weight: 400;
+}
+
+body {
+  background-color: #f4f4f4;
+  max-width: 500px;
+  min-height: 100vh;
+  margin: 0 auto;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+header {
+  background-color: #629E46;
+  color: #f4f4f4;
+}
+
+header .top {
+  background-color: #4C7C34;
+  height: 20px;
+}
+
+header .large {
+  padding: 20px 10% 50px;
+}
+
+header h1 {
+  margin-bottom: 10px;
+  font-size: 2.5rem;
+  font-weight: normal;
+}
+
+header h2 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+footer {
+  background-color: #629E46;
+  color: #f4f4f4;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 40px 15%;
+}
+
+footer img {
+  width: 20%;
+  padding: 0 5%;
+}
+
+footer .text {
+  text-align: center;
+  width: 70%;
+}
