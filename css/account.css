@@ -26,3 +26,7 @@
 .or::after {
   right: 100%;
 }
+
+.error {
+  text-align: center;
+}
