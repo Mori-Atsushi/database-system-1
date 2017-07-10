@@ -28,6 +28,7 @@
           default:
             break;
         }
+        unset($_SESSION['regist_error']);
       ?>
       <form action="./regist.php" method="post">
         <input type="email" name="mail" placeholder="メールアドレス">
