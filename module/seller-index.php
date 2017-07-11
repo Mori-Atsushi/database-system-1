@@ -36,7 +36,8 @@
       $result = mysqli_query($link, $query)
         or die('問い合わせの実行に失敗しました');
       while($row = mysqli_fetch_assoc($result)) {
-        echo '<li><a href="./product-detail.php?product_id=' . $row['product_id'] . '">';
+        echo '<li style="background-image: url(' . $row['image_url'] . '); ">';
+        echo '<a href="./product-detail.php?product_id=' . $row['product_id'] . '">';
         echo '<div>' . $row['name'] . '</div>';
         echo '</a></li>';
       }

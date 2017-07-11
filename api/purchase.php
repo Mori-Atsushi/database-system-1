@@ -11,6 +11,22 @@
     $query .= 'values("' . $_POST['product_id'] . '", "' . $_SESSION['user_id'] . '", "' . $_POST['num'] . '", "' . date('Y/m/d') . '")';
     $result = mysqli_query($link, $query)
       or die('問い合わせの実行に失敗しました');
+
+    $query = 'select stock from product where product_id = ' . $_POST['product_id'];
+    $result = mysqli_query($link, $query)
+      or die('問い合わせの実行に失敗しました');
+    $stock = 0;
+    while($row = mysqli_fetch_assoc($result)) {
+      $stock = (int)$row['stock'];
+    }
+    $stock -= (int)$_POST['num'];
+
+    $query = '';
+    $query .= 'update product ';
+    $query .= 'set stock = "' . $stock . '" ';
+    $query .= 'where product_id = ' . $_POST['product_id'];
+    $result = mysqli_query($link, $query)
+      or die('問い合わせの実行に失敗しました');
     header('Location: ../product-detail.php?product_id=' . $_POST['product_id']);
     exit();
   } else {
