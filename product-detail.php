@@ -105,6 +105,33 @@
         }
       ?>
     </section>
+
+    <div id="purchase-pop" class="pop">
+      <div class="card">
+        <h2>購入確認</h2>
+        <p>数量を記入し、送信ボタンを押してください。<span>（在庫：<?php echo $product['stock']; ?> 個）</span><p>
+        <form action="./api/purchase.php" method="post">
+          <input class="text" type="text" name="num" placeholder="数量">
+          <input style="display: none;" class="text" type="text" name="product_id" value="<?php echo $product['product_id']; ?>">
+          <input class="button" type="submit" value="送信">
+        </form>
+      </div>
+    </div>
+
+    <div id="review-pop" class="pop">
+      <div class="card">
+        <h2>レビュー記入</h2>
+        <p>レビューを記入し、送信ボタンを押してください。<span>（評価：0〜5）</span><p>
+        <form action="./api/new-review.php" method="post">
+          <input class="text" type="text" name="num" placeholder="評価(必須)">
+          <input class="text" type="text" name="title" placeholder="タイトル">
+          <input class="text" type="text" name="comment" placeholder="コメント">
+          <input style="display: none;" class="text" type="text" name="product_id" value="<?php echo $product['product_id']; ?>">
+          <input class="button" type="submit" value="送信">
+        </form>
+      </div>
+    </div>
+
     <?php echo common_footer(); ?>
   </body>
 </html>
