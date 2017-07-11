@@ -123,7 +123,7 @@
         <h2>レビュー記入</h2>
         <p>レビューを記入し、送信ボタンを押してください。<span>（評価：0〜5）</span><p>
         <form action="./api/new-review.php" method="post">
-          <input class="text" type="text" name="num" placeholder="評価(必須)">
+          <input class="text" type="text" name="value" placeholder="評価(必須)">
           <input class="text" type="text" name="title" placeholder="タイトル">
           <input class="text" type="text" name="comment" placeholder="コメント">
           <input style="display: none;" class="text" type="text" name="product_id" value="<?php echo $product['product_id']; ?>">
