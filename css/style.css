@@ -48,7 +48,7 @@ section .mini-button {
   height: 3rem;
 }
 
-input.text {
+input.text, textarea.text {
   margin: 20px 0;
   display: block;
   width: 100%;
@@ -67,6 +67,11 @@ input:focus {
 }
 
 button:focus {
+  outline: 0;
+  border-color: none;
+}
+
+textarea:focus {
   outline: 0;
   border-color: none;
 }

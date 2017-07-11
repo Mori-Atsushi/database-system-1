@@ -36,7 +36,7 @@ section .review li {
   padding: 10px 0;
 }
 
-section h3 {
+section .review h3 {
   font-weight: normal;
   display: inline;
 }

@@ -32,6 +32,7 @@
       $product = $row;
     }
   }
+  require_once('./module/common.php');
 ?>
 
 <!DOCTYPE html>
@@ -42,41 +43,31 @@
     <meta name="description" content="Database System 2">
     <meta name="author" content="Mori Atsushi">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/product.css">
   </head>
   <body>
-    <header>
-      <h1>商品編集</h1>
-      <nav>
-        <ul>
-          <li><a href="./index.php">トップに戻る</a></li>
-          <li><a href="./user-config.php">ユーザ設定</a></li>
-          <li><a href="./auth/logout.php">ログアウト</a></li>
-        </ul>
-      </nav>
-    </header>
-
+    <?php echo common_header(false, '商品編集'); ?>
     <section>
       <?php
         echo '<form action="./api/update-product.php" method="post">';
         echo '<div style="display:none;"><input type="text" name="product_id" value="' . $product['product_id'] . '"></div>';
         echo '<div><label for="name">商品名</label>';
-        echo '<input type="text" id="name" name="name" value="' . $product['name'] . '"></div>';
-        echo '<div><img src="' . $product['image_url'] . '">';
-        echo '<label for="image_url">画像</label>';
-        echo '<input type="file" id="image_url" name="image_url"></div>';
-        echo '<div><label for="price">値段</label>';
-        echo '<input type="text" id="price" name="price" value="' . $product['price'] . '">円</div>';
-        echo '<div><label for="stock">在庫</label>';
-        echo '<input type="text" id="stock" name="stock" value="' . $product['stock'] . '">個</div>';
+        echo '<input class="text" type="text" id="name" name="name" value="' . $product['name'] . '"></div>';
+        echo '<div><label for="image_url">画像</label>';
+        echo '<input class="text" type="text" id="image_url" name="image_url" value="' . $product['image_url'] . '"></div>';
+        echo '<label for="price">値段</label>';
+        echo '<div class="union"><input class="union text" type="text" id="price" name="price" value="' . $product['price'] . '"><span>円</span></div>';
+        echo '<label for="stock">在庫</label>';
+        echo '<div class="union"><input class="text" type="text" id="stock" name="stock" value="' . $product['stock'] . '"><span>個</span></div>';
         echo '<div><label for="comment">説明文</label>';
-        echo '<textarea id="comment" name="comment">' . $product['comment'] . '</textarea></div>';
-        echo '<input type="submit" value="更新">';
+        echo '<textarea class="text" id="comment" name="comment">' . $product['comment'] . '</textarea></div>';
+        echo '<input class="button" type="submit" value="更新">';
         echo '</form>';
       ?>
     </section>
-
-    <footer>
-      University of Tsukuba
-    </footer>
+    <?php echo common_footer(); ?>
   </body>
 </html>
