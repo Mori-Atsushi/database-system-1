@@ -59,7 +59,7 @@
         echo '<h3>' . $product['shop_name'] . '</h3>';
         switch($_SESSION['user_type']) {
           case 'customer':
-            echo '<a class="button mini-button" href="./purchase?product_id=' . $product['product_id'] . '">購入</a>';
+            echo '<button id="purchase" class="button mini-button" href="./purchase?product_id=' . $product['product_id'] . '">購入</button>';
             break;
           case 'seller':
             if($product['user_id'] === $_SESSION['user_id']) {
@@ -79,7 +79,7 @@
         echo review_heart($product['product_id'], $link, true);
         switch($_SESSION['user_type']) {
           case 'customer':
-            echo '<a class="button mini-button" href="./new-review?roduct_id=' . $product['prodcut_id'] . '">レビューを書く</a>';
+            echo '<button id="new-review" class="button mini-button" href="./new-review?roduct_id=' . $product['prodcut_id'] . '">レビューを書く</button>';
             break;
         }
         $query = '';
@@ -133,5 +133,8 @@
     </div>
 
     <?php echo common_footer(); ?>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/script.js"></script>
   </body>
 </html>

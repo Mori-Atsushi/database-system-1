@@ -246,6 +246,7 @@ header .open ul {
   border-radius:3px;
   -moz-border-radius:3px;
   -webkit-border-radius:3px;
+  z-index: 100;
 }
 
 header .open li {

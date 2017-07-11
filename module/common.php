@@ -13,7 +13,7 @@
       } else {
         $return .= ' <h1>' . $title . '</h1>';
       }
-      $return .= '<nav>';
+      $return .= '<nav id="nav">';
       $return .= '<button id="menu-button" class="button menu-button"><span class="menu-button-icon"></span></button>';
       $return .= '<ul>';
       $return .= '<li><a href="./index.php">トップに戻る</a></li>';
