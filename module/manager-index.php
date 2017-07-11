@@ -1,7 +1,7 @@
 <section>
   <h2>販売業者一覧</h2>
-  <a href="./add-seller.php">追加</a>
-  <ul>
+  <a class="button mini-button" href="./add-seller.php">追加</a>
+  <ul class="text-list">
     <?php
       $query = '';
       $query .= 'select * from seller ';
@@ -14,21 +14,21 @@
       } else {
         while($row = mysqli_fetch_assoc($result)) {
           echo '<li>';
-          echo '<div>' . $row['shop_name'] . '</div>';
-          echo '<spna>ユーザID：' . $row['user_id'] . ' - </span>';
-          echo '<spna>' . $row['mail'] . '</span>';
+          echo '<div class="main-text">' . $row['shop_name'] . '</div>';
+          echo '<p class="sub-text"><spna>ユーザID：' . $row['user_id'] . ' - </span>';
+          echo '<spna>' . $row['mail'] . '</span><p>';
           echo '</li>';
         }
       }
     ?>
   </ul>
-  <a href="./seller-list.php">もっと見る</a>
+  <a class="read-more" href="./seller-list.php">もっと見る</a>
 </section>
 
 <section>
   <h2>利用者一覧</h2>
-  <a href="./add-customer.php">追加</a>
-  <ul>
+  <a class="button mini-button" href="./add-customer.php">追加</a>
+  <ul class="text-list">
     <?php
       $query = '';
       $query .= 'select * from customer ';
@@ -41,12 +41,12 @@
       } else {
         while($row = mysqli_fetch_assoc($result)) {
           echo '<li>';
-          echo '<div>ユーザID：' . $row['user_id'] . '</div>';
-          echo '<spna>' . $row['mail'] . '</span>';
+          echo '<div class="main-text">ユーザID：' . $row['user_id'] . '</div>';
+          echo '<p class="sub-text">' . $row['mail'] . '</p>';
           echo '</li>';
         }
       }
     ?>
   </ul>
-  <a href="./customer-list.php">もっと見る</a>
+  <a class="read-more" href="./customer-list.php">もっと見る</a>
 </section>
