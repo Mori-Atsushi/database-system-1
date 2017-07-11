@@ -1,0 +1,98 @@
+.cover-image {
+  padding: 0;
+  margin: 0;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+}
+
+section {
+  position: relative;
+}
+
+section.main h2 {
+  font-size: 2rem;
+  color: #333333;
+  margin-bottom: 5px;
+}
+
+section.main h3 {
+  font-size: 1rem;
+  color: #aaaaaa;
+  margin: 5px 0 20px;
+  font-weight: normal;
+}
+
+section .button {
+  margin: 0;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 120px;
+  font-size: 0.8rem;
+  line-height: 3rem;
+  height: 3rem;
+}
+
+section .price {
+  color: #629E46;
+  font-size: 1.5rem;
+}
+
+section .comment {
+  color: #aaaaaa;
+}
+
+section .review {
+  padding-top: 10px;
+}
+
+section .review li {
+  padding: 10px 0;
+}
+
+section h3 {
+  font-weight: normal;
+  display: inline;
+}
+
+.pop {
+  display: none;
+}
+
+.show {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.show .card {
+  padding: 10px 5% 0;
+  background-color: #ffffff;
+  position: absolute;
+  margin: auto;
+  top: 20%;
+  left: 0;
+  right: 0;
+  width: 60%;
+  max-width: 350px;
+}
+
+.show h2 {
+  font-weight: normal;
+}
+
+.show p {
+  line-height: 2rem;
+  color: #aaaaaa;
+}
+
+.show p span {
+  color: #333333;
+}

@@ -1,19 +1,19 @@
 <?php
   function product_list($row, $link) {
     $return = '';
-    $return .= '<li>';
-    $return .= '<img src="' . $row['image_url'] . '">';
-    $return .= '<h3><a href="./product-detail.php?product_id=' . $row['product_id'] . '">' . $row['name'] . '</a></h3>';
+    $return .= '<li class="product-li">';
+    $return .= '<div class="product-image" style="background-image: url(' . $row['image_url'] . ');"></div>';
+    $return .= '<div class="info"><h3><a href="./product-detail.php?product_id=' . $row['product_id'] . '">' . $row['name'] . '</a></h3>';
     if(isset($row['purchase_date'])) {
-      $return .= '<span>-' . $row['purchase_date'] . '購入</span>';
+      $return .= '<span class="date">-' . $row['purchase_date'] . '購入</span>';
     }
     if(isset($row['sell_date'])) {
-      $return .= '<span>-' . $row['sell_date'] . '出品</span>';
+      $return .= '<span class="date">-' . $row['sell_date'] . '出品</span>';
     }
     $return .= '<h4>' . $row['shop_name'] . '</h4>';
-    $return .= '<div>' . $row['price'] . '円</div>';
+    $return .= '<div class="price">' . $row['price'] . '円</div>';
     $return .= review_heart($row['product_id'], $link);
-    $return .= '</li>';
+    $return .= '</div></li>';
 
     return $return;
   }
@@ -33,7 +33,7 @@
     }
 
     $return = '';
-    $return .= '<div>';
+    $return .= '<div><span class="review-heart">';
     for($i = 0; $i < 5; $i++) {
       if($i < (int)$review) {
         $return .= '♥';
@@ -41,6 +41,7 @@
         $return .= '♡';
       }
     }
+    $return .= '</span>';
     if($view_num) {
       $return .= '<span>（' . number_format($review, 1) . '/5.0)</span>';
     }

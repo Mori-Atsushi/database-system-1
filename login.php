@@ -21,7 +21,7 @@
     <section>
       <?php
         if($_SESSION['login_error']) {
-          echo '<p>メールアドレスまたはパスワードが間違っています</p>';
+          echo '<p class="error">メールアドレスまたはパスワードが間違っています</p>';
         }
         unset($_SESSION['login_error']);
       ?>

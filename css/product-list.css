@@ -1,0 +1,38 @@
+.product-li {
+  display: flex;
+  flex-direction: row;
+  align-items: top;
+  padding: 10px 0;
+}
+
+.product-li .product-image {
+  width: 25%;
+  padding-bottom: 25%;
+  background-size: cover;
+  background-position: center;
+}
+
+.product-li .info {
+  width: 70%;
+  padding-left: 5%;
+}
+
+.product-li .info h3 {
+  display: inline;
+}
+
+.product-li .info .date {
+  margin-left: 5px;
+  font-size: 0.9rem;
+}
+
+.product-li .info h4 {
+  margin: 5px 0 10px;
+  font-weight: normal;
+}
+
+.product-li .info .price {
+  color: #629E46;
+  margin: 5px 0;
+  font-size: 1.2rem;
+}
