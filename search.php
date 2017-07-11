@@ -15,7 +15,8 @@
   mysqli_set_charset($link, "utf8")
     or die('文字コードの設定に失敗しました');
 
-  require_once('module/product-list.php');
+  require_once('./module/product-list.php');
+  require_once('./module/common.php');
 ?>
 
 <!DOCTYPE html>
@@ -26,21 +27,13 @@
     <meta name="description" content="Database System 2">
     <meta name="author" content="Mori Atsushi">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/product-list.css">
   </head>
   <body>
-    <header>
-      <form action="./search.php" method="post">
-        <input type="text" name="keyword" placeholder="検索" value="<?php echo $_POST['keyword'] ?>">
-        <input type="submit" value="検索">
-      </form>
-      <nav>
-        <ul>
-          <li><a href="./index.php">トップに戻る</a></li>
-          <li><a href="./user-config.php">ユーザ設定</a></li>
-          <li><a href="./auth/logout.php">ログアウト</a></li>
-        </ul>
-      </nav>
-    </header>
+    <?php echo common_header(true, $_POST['keyword']); ?>
 
     <section>
       <?php
@@ -61,9 +54,6 @@
         }
       ?>
     </section>
-
-    <footer>
-      University of Tsukuba
-    </footer>
+    <?php echo common_footer(); ?>
   </body>
 </html>

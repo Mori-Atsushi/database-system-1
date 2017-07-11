@@ -29,7 +29,7 @@
     <link rel="stylesheet" type="text/css" href="css/top.css">
   </head>
   <body>
-    <?php echo common_header($search=true); ?>
+    <?php echo common_header(true); ?>
 
     <?php
       switch($_SESSION['user_type']) {

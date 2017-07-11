@@ -7,7 +7,7 @@
       $return .= '<div class="bar">';
       if($search) {
         $return .= '<form action="./search.php" method="post">';
-        $return .= '<input class="text" type="text" name="keyword" placeholder="キーワード">';
+        $return .= '<input class="text" type="text" name="keyword" placeholder="キーワード" value="' . $title . '">';
         $return .= '<input class="button" type="submit" value="検索">';
         $return .= '</form>';
       } else {
