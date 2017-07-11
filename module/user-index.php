@@ -1,4 +1,4 @@
-<section>
+<section class="side-scroll">
   <h2>人気商品</h2>
   <ul>
     <?php
