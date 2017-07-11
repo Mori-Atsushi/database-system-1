@@ -1,0 +1,27 @@
+section {
+  padding: 20px 5% 0;
+}
+
+input.text, textarea.text {
+  margin: 0 0 20px;
+}
+
+label {
+  font-size: 0.8rem;
+  color: #aaaaaa;
+  display: block;
+}
+
+.union {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+.union input.text {
+  display: inline-block;
+}
+
+.union span {
+  padding-left: 2%;
+}

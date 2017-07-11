@@ -1,5 +1,7 @@
 <?php
   ini_set( 'display_errors', 1 );
+  session_start();
+
   function setSession($result, $userType) {
     if(mysqli_num_rows($result) === 1) {
       while($row = mysqli_fetch_assoc($result)) {
@@ -27,7 +29,6 @@
       setSession($result, $userType);
     }
     mysqli_close($link);
-    session_start();
     $_SESSION['login_error'] = TRUE;
     header('Location: ../login.php');
     exit();

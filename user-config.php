@@ -22,6 +22,7 @@
     header('Location: ./index.php');
     exit();
   }
+  require_once('./module/common.php');
 
   $user = null;
   while($row = mysqli_fetch_assoc($result)) {
@@ -37,22 +38,12 @@
     <meta name="description" content="Database System 2">
     <meta name="author" content="Mori Atsushi">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
   </head>
   <body>
-    <header>
-      <form action="./search.php" method="post">
-        <input type="text" name="keyword" placeholder="検索">
-        <input type="submit" value="検索">
-      </form>
-      <nav>
-        <ul>
-          <li><a href="./index.php">トップに戻る</a></li>
-          <li><a href="./user-config.php">ユーザ設定</a></li>
-          <li><a href="./auth/logout.php">ログアウト</a></li>
-        </ul>
-      </nav>
-    </header>
-
+    <?php echo common_header(false, 'ユーザ設定'); ?>
     <section>
       <?php
         switch($_SESSION['update_error']) {
@@ -74,20 +65,17 @@
         unset($_SESSION['update_error']);
       ?>
       <form action="./auth/update.php" method="post">
-        <input type="email" name="mail" placeholder="新メールアドレス" value="<?php echo $user['mail']; ?>">
-        <input type="password" name="password" placeholder="新パスワード">
-        <input type="password" name="password2" placeholder="新パスワード(確認)">
+        <input class="text" type="email" name="mail" placeholder="新メールアドレス" value="<?php echo $user['mail']; ?>">
+        <input class="text" type="password" name="password" placeholder="新パスワード">
+        <input class="text" type="password" name="password2" placeholder="新パスワード(確認)">
         <?php
           if($_SESSION['user_type'] === 'seller') {
-            echo '<input type="text" name="shop_name" placeholder="新店名" value="' . $user['shop_name'] . '">';
+            echo '<input class="text" type="text" name="shop_name" placeholder="新店名" value="' . $user['shop_name'] . '">';
           }
         ?>
-        <input type="submit" value="送信">
+        <input class="button" type="submit" value="送信">
       </form>
     </section>
-
-    <footer>
-      University of Tsukuba
-    </footer>
+    <?php echo common_footer(); ?>
   </body>
 </html>

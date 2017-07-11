@@ -23,6 +23,7 @@ a {
 }
 
 section {
+  position: relative;
   padding: 10px 5%;
   overflow: hidden;
   background-color: #ffffff;
@@ -36,7 +37,18 @@ section h2 {
   font-weight: normal;
 }
 
-input.text {
+section .mini-button {
+  margin: 0;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 120px;
+  font-size: 0.8rem;
+  line-height: 3rem;
+  height: 3rem;
+}
+
+input.text, textarea.text {
   margin: 20px 0;
   display: block;
   width: 100%;
@@ -55,6 +67,11 @@ input:focus {
 }
 
 button:focus {
+  outline: 0;
+  border-color: none;
+}
+
+textarea:focus {
   outline: 0;
   border-color: none;
 }
