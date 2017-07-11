@@ -14,6 +14,7 @@
     or die('MySQL への接続に失敗しました');
   mysqli_set_charset($link, "utf8")
     or die('文字コードの設定に失敗しました');
+  require_once('./module/common.php');
 ?>
 
 <!DOCTYPE html>
@@ -24,20 +25,15 @@
     <meta name="description" content="Database System 2">
     <meta name="author" content="Mori Atsushi">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/top.css">
   </head>
   <body>
-    <header>
-      <h1>利用者一覧</h1>
-      <nav>
-        <ul>
-          <li><a href="./index.php">トップに戻る</a></li>
-          <li><a href="./user-config.php">ユーザ設定</a></li>
-          <li><a href="./auth/logout.php">ログアウト</a></li>
-        </ul>
-      </nav>
-    </header>
-
+    <?php echo common_header(false, $title="利用者一覧"); ?>
     <section>
+      <ul class="text-list">
       <?php
         $query = 'select * from customer';
         $result = mysqli_query($link, $query)
@@ -47,14 +43,14 @@
         } else {
           while($row = mysqli_fetch_assoc($result)) {
             echo '<li>';
-            echo '<div>ユーザID：' . $row['user_id'] . '</div>';
-            echo '<spna>' . $row['mail'] . '</span>';
+            echo '<div class="main-text">ユーザID：' . $row['user_id'] . '</div>';
+            echo '<p class="sub-text">' . $row['mail'] . '</p>';
             echo '</li>';
           }
         }
       ?>
+      </ul>
     </section>
-
     <footer>
       University of Tsukuba
     </footer>
