@@ -8,6 +8,7 @@
     header('Location: ./index.php');
     exit();
   }
+  require_once('./module/common.php');
 ?>
 
 <!DOCTYPE html>
@@ -18,52 +19,45 @@
     <meta name="description" content="Database System 2">
     <meta name="author" content="Mori Atsushi">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/account.css">
   </head>
   <body>
-    <header>
-      <h1>販売業者追加</h1>
-      <nav>
-        <ul>
-          <li><a href="./index.php">トップに戻る</a></li>
-          <li><a href="./user-config.php">ユーザ設定</a></li>
-          <li><a href="./auth/logout.php">ログアウト</a></li>
-        </ul>
-      </nav>
-    </header>
-
+    <?php echo common_header(false, '販売業者追加'); ?>
     <section>
       <?php
         if(isset($_SESSION['add_seller_error'])) {
+          echo '<p class="error">';
           switch($_SESSION['add_seller_error']) {
             case '0':
-              echo '<p>追加されました。</p>';
+              echo '追加されました。';
               break;
             case '1':
-              echo '<p>このメールアドレスは既に登録されています。</p>';
+              echo 'このメールアドレスは既に登録されています。';
               break;
             case '2':
-              echo '<p>確認パスワードが間違っています。</p>';
+              echo '確認パスワードが間違っています。';
               break;
             case '3':
-              echo '<p>全てのフォームを入力してください。</p>';
+              echo '全てのフォームを入力してください。';
               break;
             default:
               break;
           }
+          echo '</p>';
           unset($_SESSION['add_seller_error']);
         }
       ?>
       <form action="./api/regist-seller.php" method="post">
-        <input type="email" name="mail" placeholder="メールアドレス">
-        <input type="password" name="password" placeholder="パスワード">
-        <input type="password" name="password2" placeholder="パスワード(確認)">
-        <input type="text" name="shop_name" placeholder="店名">
-        <input type="submit" value="追加">
+        <input class="text" type="email" name="mail" placeholder="メールアドレス">
+        <input class="text" type="password" name="password" placeholder="パスワード">
+        <input class="text" type="password" name="password2" placeholder="パスワード(確認)">
+        <input class="text" type="text" name="shop_name" placeholder="店名">
+        <input class="button" type="submit" value="追加">
       </form>
     </section>
-
-    <footer>
-      University of Tsukuba
-    </footer>
+    <?php echo common_footer(); ?>
   </body>
 </html>

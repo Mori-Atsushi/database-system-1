@@ -41,27 +41,30 @@
 
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/account.css">
   </head>
   <body>
     <?php echo common_header(false, 'ユーザ設定'); ?>
     <section>
       <?php
+        echo '<p class="error">';
         switch($_SESSION['update_error']) {
           case '0':
-            echo '<p>更新されました。</p>';
+            echo '更新されました。';
             break;
           case '1':
-            echo '<p>このメールアドレスは既に登録されています。</p>';
+            echo 'このメールアドレスは既に登録されています。';
             break;
           case '2':
-            echo '<p>確認パスワードが間違っています。</p>';
+            echo '確認パスワードが間違っています。';
             break;
           case '3':
-            echo '<p>全てのフォームを入力してください。</p>';
+            echo '全てのフォームを入力してください。';
             break;
           default:
             break;
         }
+        echo '</p>';
         unset($_SESSION['update_error']);
       ?>
       <form action="./auth/update.php" method="post">

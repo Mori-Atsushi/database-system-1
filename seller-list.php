@@ -14,6 +14,7 @@
     or die('MySQL への接続に失敗しました');
   mysqli_set_charset($link, "utf8")
     or die('文字コードの設定に失敗しました');
+  require_once('./module/common.php');
 ?>
 
 <!DOCTYPE html>
@@ -24,20 +25,15 @@
     <meta name="description" content="Database System 2">
     <meta name="author" content="Mori Atsushi">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/top.css">
   </head>
   <body>
-    <header>
-      <h1>販売業者一覧</h1>
-      <nav>
-        <ul>
-          <li><a href="./index.php">トップに戻る</a></li>
-          <li><a href="./user-config.php">ユーザ設定</a></li>
-          <li><a href="./auth/logout.php">ログアウト</a></li>
-        </ul>
-      </nav>
-    </header>
-
+    <?php echo common_header(false, $title="販売業者一覧"); ?>
     <section>
+      <ul class="text-list">
       <?php
         $query = 'select * from seller';
         $result = mysqli_query($link, $query)
@@ -47,17 +43,15 @@
         } else {
           while($row = mysqli_fetch_assoc($result)) {
             echo '<li>';
-            echo '<div>' . $row['shop_name'] . '</div>';
-            echo '<spna>ユーザID：' . $row['user_id'] . ' - </span>';
-            echo '<spna>' . $row['mail'] . '</span>';
+            echo '<div class="main-text">' . $row['shop_name'] . '</div>';
+            echo '<p class="sub-text"><spna>ユーザID：' . $row['user_id'] . ' - </span>';
+            echo '<spna>' . $row['mail'] . '</span><p>';
             echo '</li>';
           }
         }
       ?>
+      </ul>
     </section>
-
-    <footer>
-      University of Tsukuba
-    </footer>
+    <?php echo common_footer(); ?>
   </body>
 </html>
