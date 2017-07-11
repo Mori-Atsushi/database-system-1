@@ -23,6 +23,7 @@ a {
 }
 
 section {
+  position: relative;
   padding: 10px 5%;
   overflow: hidden;
   background-color: #ffffff;
@@ -34,6 +35,17 @@ section h2 {
   margin: 10px 0 20px;;
   font-size: 1.2rem;
   font-weight: normal;
+}
+
+section .mini-button {
+  margin: 0;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 120px;
+  font-size: 0.8rem;
+  line-height: 3rem;
+  height: 3rem;
 }
 
 input.text {

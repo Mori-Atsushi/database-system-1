@@ -59,11 +59,11 @@
         echo '<h3>' . $product['shop_name'] . '</h3>';
         switch($_SESSION['user_type']) {
           case 'customer':
-            echo '<a class="button" href="./purchase?product_id=' . $product['product_id'] . '">購入</a>';
+            echo '<a class="button mini-button" href="./purchase?product_id=' . $product['product_id'] . '">購入</a>';
             break;
           case 'seller':
             if($product['user_id'] === $_SESSION['user_id']) {
-              echo '<a class="button" href="./edit-product.php?product_id=' . $product['product_id'] . '">編集</a>';
+              echo '<a class="button mini-button" href="./edit-product.php?product_id=' . $product['product_id'] . '">編集</a>';
             }
             break;
         }
@@ -79,7 +79,7 @@
         echo review_heart($product['product_id'], $link, true);
         switch($_SESSION['user_type']) {
           case 'customer':
-            echo '<a class="button" href="./new-review?roduct_id=' . $product['prodcut_id'] . '">レビューを書く</a>';
+            echo '<a class="button mini-button" href="./new-review?roduct_id=' . $product['prodcut_id'] . '">レビューを書く</a>';
             break;
         }
         $query = '';
